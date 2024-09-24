@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cp5c7a5a2t71s"]
+
+[node name="Label" type="Label"]
+offset_left = 536.0
+offset_top = 277.0
+offset_right = 615.0
+offset_bottom = 300.0
+text = "Hey There"
