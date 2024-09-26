@@ -1,7 +1,6 @@
-extends Area2D
+extends CharacterBody2D
 
-@export var speed = 500  # Movement speed in pixels per second
-var velocity = Vector2.ZERO
+@export var speed = 250  # Movement speed in pixels per second
 
 func _physics_process(delta):
 	velocity = Vector2.ZERO  # Reset velocity each frame
@@ -24,17 +23,18 @@ func _physics_process(delta):
 	position += velocity * delta
 
 	# Animation handling
-	#update_animation(velocity)
+	update_animation(velocity)
+	move_and_slide()
 
 
-#func update_animation(speedV):
-#	if speedV.x > 0:
-#		$AnimatedSprite2D.play("walk_right")
-#	elif speedV.x < 0:
-#		$AnimatedSprite2D.play("walk_left")
-#	elif speedV.y > 0:
-#		$AnimatedSprite2D.play("walk_down")
-#	elif speedV.y < 0:
-#		$AnimatedSprite2D.play("walk_up")
-#	else:
-#		$AnimatedSprite2D.play("idle")
+func update_animation(speedV):
+	if speedV.x > 0:
+		$AnimatedSprite2D.play("walk_right")
+	elif speedV.x < 0:
+		$AnimatedSprite2D.play("walk_left")
+	elif speedV.y > 0:
+		$AnimatedSprite2D.play("walk_down")
+	elif speedV.y < 0:
+		$AnimatedSprite2D.play("walk_up")
+	else:
+		$AnimatedSprite2D.play("idle")
