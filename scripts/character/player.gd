@@ -1,0 +1,40 @@
+extends Area2D
+
+@export var speed = 500  # Movement speed in pixels per second
+var velocity = Vector2.ZERO
+
+func _physics_process(delta):
+	velocity = Vector2.ZERO  # Reset velocity each frame
+
+	# Input handling for WASD keys
+	if Input.is_action_pressed("move_right"):
+		velocity.x += 1
+	if Input.is_action_pressed("move_left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("move_down"):
+		velocity.y += 1
+	if Input.is_action_pressed("move_up"):
+		velocity.y -= 1
+
+	# Normalize velocity to prevent faster diagonal movement
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
+
+	# Move the player by updating position
+	position += velocity * delta
+
+	# Animation handling
+	#update_animation(velocity)
+
+
+#func update_animation(speedV):
+#	if speedV.x > 0:
+#		$AnimatedSprite2D.play("walk_right")
+#	elif speedV.x < 0:
+#		$AnimatedSprite2D.play("walk_left")
+#	elif speedV.y > 0:
+#		$AnimatedSprite2D.play("walk_down")
+#	elif speedV.y < 0:
+#		$AnimatedSprite2D.play("walk_up")
+#	else:
+#		$AnimatedSprite2D.play("idle")
