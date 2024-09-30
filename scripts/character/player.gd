@@ -2,9 +2,16 @@ extends CharacterBody2D
 
 @export var speed = 250  # Movement speed in pixels per second
 
+signal interact
+
 func _ready() -> void:
-	# Add the player to the "Player" group for easy identification
+	# Add the player to the "Player" group for identification
 	add_to_group("Player")
+
+func _input(event: InputEvent) -> void:
+	# Check if the interaction key is pressed
+	if event.is_action_pressed("ui_accept"):
+		interact.emit()
 
 func _physics_process(delta):
 	velocity = Vector2.ZERO  # Reset velocity each frame
