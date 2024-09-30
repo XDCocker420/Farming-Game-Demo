@@ -13,18 +13,17 @@ func _on_body_entered(body):
 	# Check if the body is the player
 	if body.is_in_group("Player"):
 		player_in_range = body
+		if player_in_range and Input.is_action_just_pressed("ui_accept"):
+			open_door()
 		print("Player is near the door.")
 
 func _on_body_exited(body):
 	# Reset when the player leaves the area
 	if body.is_in_group("Player"):
 		player_in_range = null
+		if player_in_range and Input.is_action_just_pressed("ui_accept"):
+			open_door()
 		print("Player left the door area.")
-
-func _process(delta):
-	# Check for interaction input when the player is in range
-	if player_in_range and Input.is_action_just_pressed("ui_accept"):
-		open_door()
 
 func open_door():
 	# Implement your door opening logic here
