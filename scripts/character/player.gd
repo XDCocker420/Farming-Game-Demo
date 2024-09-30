@@ -44,3 +44,4 @@ func update_animation(speedV):
 		$AnimatedSprite2D.play("walk_up")
 	else:
 		$AnimatedSprite2D.play("idle")
+ 
