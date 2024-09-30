@@ -175,8 +175,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jok58"]
-size = Vector2(72, 112)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kx7bk"]
+radius = 19.0
+height = 38.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_v4iti")
@@ -188,7 +189,7 @@ sprite_frames = SubResource("SpriteFrames_0sqjb")
 animation = &"walk_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 3)
-shape = SubResource("RectangleShape2D_jok58")
+position = Vector2(7, 33)
+shape = SubResource("CapsuleShape2D_kx7bk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
