@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfpp5sa7x3s7g"]
+[gd_scene load_steps=16 format=3 uid="uid://cfpp5sa7x3s7g"]
 
 [ext_resource type="Texture2D" uid="uid://b0gnbhlslqkjl" path="res://assets/green_buildings/House1.png" id="1_7covy"]
 [ext_resource type="Script" path="res://scripts/houses/basic_house.gd" id="1_hb7wc"]
 [ext_resource type="Texture2D" uid="uid://tuboqfeogpix" path="res://assets/green_buildings/Door1.png" id="2_lxl5q"]
 [ext_resource type="Texture2D" uid="uid://c24w8vf3hu2hh" path="res://assets/green_buildings/Sword_Shield.png" id="3_tng0y"]
+[ext_resource type="Script" path="res://scripts/houses/door.gd" id="4_kvxye"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ureem"]
 atlas = ExtResource("2_lxl5q")
@@ -36,10 +37,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5mvum")
 }],
-"loop": true,
+"loop": false,
 "name": &"open",
-"speed": 2.0
+"speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rg2hb"]
+size = Vector2(62, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rlxg3"]
 atlas = ExtResource("3_tng0y")
@@ -70,11 +74,8 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 1.0
+"speed": 3.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rg2hb"]
-size = Vector2(62, 102)
 
 [node name="House" type="StaticBody2D"]
 disable_mode = 1
@@ -83,21 +84,23 @@ script = ExtResource("1_hb7wc")
 [node name="HouseSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_7covy")
 
-[node name="Door" type="AnimatedSprite2D" parent="."]
+[node name="DoorArea" type="Area2D" parent="."]
+script = ExtResource("4_kvxye")
+
+[node name="Door" type="AnimatedSprite2D" parent="DoorArea"]
 position = Vector2(0, 190)
 sprite_frames = SubResource("SpriteFrames_etw7q")
 animation = &"open"
+
+[node name="DoorCollision" type="CollisionShape2D" parent="DoorArea"]
+position = Vector2(1, 176)
+shape = SubResource("RectangleShape2D_rg2hb")
 
 [node name="Shield" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.254902, 10.75)
 scale = Vector2(0.661152, 0.691667)
 sprite_frames = SubResource("SpriteFrames_rna2x")
-frame_progress = 0.597677
-
-[node name="DoorCollision" type="CollisionShape2D" parent="."]
-position = Vector2(1, 201)
-shape = SubResource("RectangleShape2D_rg2hb")
-disabled = true
+frame_progress = 0.971079
 
 [node name="HouseCollision" type="CollisionPolygon2D" parent="."]
 visible = false

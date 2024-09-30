@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 @export var speed = 250  # Movement speed in pixels per second
 
+func _ready() -> void:
+	# Add the player to the "Player" group for easy identification
+	add_to_group("Player")
+
 func _physics_process(delta):
 	velocity = Vector2.ZERO  # Reset velocity each frame
 
