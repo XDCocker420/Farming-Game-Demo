@@ -7,6 +7,7 @@ signal interact
 func _ready() -> void:
 	# Add the player to the "Player" group for identification
 	add_to_group("Player")
+	load_state()
 
 func _input(event: InputEvent) -> void:
 	# Check if the interaction key is pressed
@@ -56,3 +57,21 @@ func update_animation(speedV):
 	else:
 		$AnimatedSprite2D.play("idle")
  
+func save_state() -> void:
+	# Save player's position
+	SaveData.data["player_positionX"] = global_position.x
+	SaveData.data["player_positionY"] = global_position.y
+
+func load_state() -> void:
+	# Load player's position
+	if "player_positionX" in SaveData.data || "player_positionY" in SaveData.data:
+		print("Player position loaded.")
+		global_position = Vector2(
+			SaveData.data["player_positionX"],
+			SaveData.data["player_positionY"]
+		)
+
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		# Save player state before the game quits
+		save_state()
