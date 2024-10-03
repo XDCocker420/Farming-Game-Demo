@@ -3,16 +3,27 @@ extends CharacterBody2D
 @export var speed = 250  # Movement speed in pixels per second
 
 signal interact
+signal interact2
+signal plant_crop(crop_type, position)
 
 func _ready() -> void:
 	# Add the player to the "Player" group for identification
 	add_to_group("Player")
 	load_state()
+	plant_crop.connect(CropManager._on_player_plant_crop)
 
 func _input(event: InputEvent) -> void:
 	# Check if the interaction key is pressed
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("interact"):
 		interact.emit()
+		var mouse_position = get_global_mouse_position()
+		if CropManager.is_farming_field_tile(mouse_position):
+			var crop_type = CropManager.get_selected_crop_type()
+			plant_crop.emit(crop_type, mouse_position)
+		else:
+			print("You can only plant on farming fields!")
+	if event.is_action_pressed("interact2"):
+		interact2.emit()	
 
 func _physics_process(delta):
 	velocity = Vector2.ZERO  # Reset velocity each frame
@@ -20,18 +31,12 @@ func _physics_process(delta):
 	# Input handling for WASD keys
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
-	#	$AnimatedSprite2D.play("walk_right")
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
-	#	$AnimatedSprite2D.play("walk_left")
 	if Input.is_action_pressed("move_down"):
 		velocity.y += 1
-	#	$AnimatedSprite2D.play("walk_down")
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
-	#	$AnimatedSprite2D.play("walk_up")
-	#else:
-	#	$AnimatedSprite2D.play("idle")
 
 	# Normalize velocity to prevent faster diagonal movement
 	if velocity.length() > 0:
