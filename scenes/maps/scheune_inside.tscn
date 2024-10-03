@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://v8y4lf7kwh50"]
+
+[node name="Scheune_Inside" type="Node2D"]
+
+[node name="TileMapLayers" type="Node2D" parent="."]
+
+[node name="Floor" type="TileMapLayer" parent="TileMapLayers"]
+
+[node name="Walls" type="TileMapLayer" parent="TileMapLayers"]

@@ -103,7 +103,7 @@ sprite_frames = SubResource("SpriteFrames_etw7q")
 animation = &"open"
 
 [node name="DoorCollision" type="CollisionShape2D" parent="DoorArea"]
-position = Vector2(1, 197.5)
+position = Vector2(1, 199.5)
 shape = SubResource("RectangleShape2D_rg2hb")
 
 [node name="button" type="AnimatedSprite2D" parent="DoorArea"]

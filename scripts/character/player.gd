@@ -57,6 +57,11 @@ func update_animation(speedV):
 	else:
 		$AnimatedSprite2D.play("idle")
  
+
+
+
+
+## SAVE FUNCTIONS
 func save_state() -> void:
 	# Save player's position
 	SaveData.data["player_positionX"] = global_position.x
