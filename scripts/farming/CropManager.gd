@@ -111,37 +111,35 @@ func is_time_jump_detected():
 	SaveData.data["last_saved_time"] = current_time
 
 func is_farming_field_tile(position):
-	var tilemap = get_node("/root/MainScene/TileMap")  # Adjust the path to your TileMap
-	var local_position = tilemap.to_local(position)
-	var tilemap_position = tilemap.local_to_map(local_position)
+	var tilemaps_node = get_node("/root/Demo Map/TileMaps")  # Adjust the path to your TileMap
+	 # Access the TileMap node for farming fields
+	var farming_tilemap = tilemaps_node.get_node("FarmField")  # Replace with your TileMap node name
 
-	# Get the layer index (assuming your farming fields are on a specific layer)
-	var layer_index = tilemap.get_layer_index("FarmingLayer")  # Replace with your layer name
-
-	if layer_index == -1:
-		print("Layer 'FarmingLayer' not found.")
+	if not farming_tilemap:
+		print("FarmingFieldTileMap not found.")
 		return false
 
-	# Get the tile data at the specified position and layer
-	var tile_data = tilemap.get_cell_tile_data(layer_index, tilemap_position)
+	# Convert global position to the farming TileMap's local coordinates
+	var local_position = farming_tilemap.to_local(position)
+	var tilemap_position = farming_tilemap.local_to_map(local_position)
 
-	if tile_data:
-		# Get the tile ID (source ID)
-		var tile_id = tile_data.get_source_id()
-		var tileset = tilemap.tileset
+	# Get the cell ID at the tilemap position
+	var cell_id = farming_tilemap.get_cell_source_id(tilemap_position)
+	print(cell_id)
+	if cell_id != -1:
+		var tileset = farming_tilemap.get_meta("is_farming_field")
+		print(tileset)
+		# Get the source ID of the tile at the position
+		#var source_id = farming_tilemap.get_cell_tileset_source_id(tilemap_position)
+		#var tile_source = tileset.get_source(source_id)
 
-		# Get the TileSet source
-		var source_id = tile_data.get_tileset_source_id()
-		var tile_source = tileset.get_source(source_id)
-
-		if tile_source:
-			var tile_definition = tile_source.tiles[tile_id]
-
-			if tile_definition:
-				# Access the custom data
-				var custom_data = tile_definition.custom_data
-				if custom_data.has("is_farming_field"):
-					return custom_data["is_farming_field"]
+		#if tile_source:
+		#	var tile_definition = tile_source.tiles.get(cell_id)
+#			if tile_definition:
+#				var custom_data = tile_definition.custom_data
+#				if custom_data.has("is_farming_field"):
+#					return custom_data["is_farming_field"]
+		return tileset
 	return false
 
 func _set_selected_crop_type(crop_type):
