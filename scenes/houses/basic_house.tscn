@@ -1,0 +1,122 @@
+[gd_scene load_steps=19 format=3 uid="uid://cfpp5sa7x3s7g"]
+
+[ext_resource type="Texture2D" uid="uid://b0gnbhlslqkjl" path="res://assets/green_buildings/House1.png" id="1_7covy"]
+[ext_resource type="Script" path="res://scripts/houses/basic_house.gd" id="1_hb7wc"]
+[ext_resource type="Texture2D" uid="uid://c24w8vf3hu2hh" path="res://assets/green_buildings/Sword_Shield.png" id="3_tng0y"]
+[ext_resource type="Script" path="res://scripts/houses/door.gd" id="4_kvxye"]
+[ext_resource type="Texture2D" uid="uid://wn1k6pny7es1" path="res://assets/green_buildings/Door/Door2.png" id="4_ogq50"]
+[ext_resource type="Texture2D" uid="uid://vcpjwg6s3v3" path="res://assets/green_buildings/Door/Door3.png" id="5_efhc3"]
+[ext_resource type="Texture2D" uid="uid://u1rawwah2ljb" path="res://assets/green_buildings/Door/Door4.png" id="6_w2gif"]
+[ext_resource type="Texture2D" uid="uid://c4x5rrjchl0wg" path="res://assets/green_buildings/Door/Door1.png" id="7_1eum2"]
+[ext_resource type="Texture2D" uid="uid://cfjfflsigxxw1" path="res://assets/menu/Raven Fantasy GUI Starter Set.png" id="8_ecncy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_etw7q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ogq50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_efhc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_w2gif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1eum2")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rg2hb"]
+size = Vector2(62, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m876q"]
+atlas = ExtResource("8_ecncy")
+region = Rect2(240, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52mjq"]
+atlas = ExtResource("8_ecncy")
+region = Rect2(240, 320, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_squk0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m876q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52mjq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlxg3"]
+atlas = ExtResource("3_tng0y")
+region = Rect2(64, 0, 64, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14q11"]
+atlas = ExtResource("3_tng0y")
+region = Rect2(128, 0, 64, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo8s7"]
+atlas = ExtResource("3_tng0y")
+region = Rect2(0, 0, 64, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rna2x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlxg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14q11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlxg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yo8s7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="House" type="StaticBody2D"]
+disable_mode = 1
+script = ExtResource("1_hb7wc")
+
+[node name="HouseSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_7covy")
+
+[node name="DoorArea" type="Area2D" parent="."]
+script = ExtResource("4_kvxye")
+
+[node name="Door" type="AnimatedSprite2D" parent="DoorArea"]
+position = Vector2(0, 189)
+sprite_frames = SubResource("SpriteFrames_etw7q")
+animation = &"open"
+
+[node name="DoorCollision" type="CollisionShape2D" parent="DoorArea"]
+position = Vector2(1, 199.5)
+shape = SubResource("RectangleShape2D_rg2hb")
+
+[node name="button" type="AnimatedSprite2D" parent="DoorArea"]
+position = Vector2(59, 127)
+scale = Vector2(2.66406, 2.66406)
+sprite_frames = SubResource("SpriteFrames_squk0")
+
+[node name="Shield" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.254902, 10.75)
+scale = Vector2(0.661152, 0.691667)
+sprite_frames = SubResource("SpriteFrames_rna2x")
+frame_progress = 0.971079
+
+[node name="HouseCollision" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(46, 245, 118, 247, 117, 77, 134, 83, 124, 60, 122, -17, 55, -76, -2, -128, -63, -73, -124, -20, -127, 59, -134, 79, -120, 84, -121, 249, -43, 247, -41, 214, 1, 215, 43, 217)

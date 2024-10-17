@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1dew2nimcv4u"]
+
+[ext_resource type="Texture2D" uid="uid://drnd2dp4r6eau" path="res://assets/farmlands/food/Wheat1.png" id="1_fdv08"]
+[ext_resource type="Texture2D" uid="uid://bmi2uvqegglyr" path="res://assets/farmlands/food/Wheat2.png" id="2_0q4e7"]
+[ext_resource type="Texture2D" uid="uid://k4lt5ix3dw1x" path="res://assets/farmlands/food/Wheat3.png" id="3_oj50m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o2w53"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fdv08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0q4e7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oj50m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpeuw"]
+size = Vector2(43, 35)
+
+[node name="wheat" type="Area2D"]
+collision_layer = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o2w53")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 33)
+shape = SubResource("RectangleShape2D_tpeuw")

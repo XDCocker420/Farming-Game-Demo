@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://clq1ii8syh3p"]
+
+[ext_resource type="Texture2D" uid="uid://dq382hwktac5y" path="res://assets/farmlands/food/Carrot1.png" id="1_86yto"]
+[ext_resource type="Texture2D" uid="uid://d1exshdb1tcqp" path="res://assets/farmlands/food/Carrot2.png" id="2_1k387"]
+[ext_resource type="Texture2D" uid="uid://ct7xh54ckqmpl" path="res://assets/farmlands/food/Carrot3.png" id="3_jvrvd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vcoy8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_86yto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1k387")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jvrvd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_domw4"]
+size = Vector2(54.5, 55.5)
+
+[node name="carrots" type="Area2D"]
+collision_layer = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vcoy8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_domw4")
