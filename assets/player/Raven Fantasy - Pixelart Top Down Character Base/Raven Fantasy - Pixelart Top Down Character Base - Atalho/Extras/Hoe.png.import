@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fxqlno7oewym"
-path="res://.godot/imported/walking up.png-787e4252b8ff4a3e4cdd6991dbba1963.ctex"
+uid="uid://ccq6p0qk5q2pb"
+path="res://.godot/imported/Hoe.png-f296a1e2c330acd9cde249ede7b62c3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/walking up.png"
-dest_files=["res://.godot/imported/walking up.png-787e4252b8ff4a3e4cdd6991dbba1963.ctex"]
+source_file="res://assets/player/Raven Fantasy - Pixelart Top Down Character Base/Raven Fantasy - Pixelart Top Down Character Base - Atalho/Extras/Hoe.png"
+dest_files=["res://.godot/imported/Hoe.png-f296a1e2c330acd9cde249ede7b62c3c.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buophldi70rjn"
-path="res://.godot/imported/walking.png-210c279fb56e382a6b74d81f29829028.ctex"
+uid="uid://b857u8xx0cgd6"
+path="res://.godot/imported/Watering Can.png-e222207b8719cb2d7b2bb6358f2a7efe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/walking.png"
-dest_files=["res://.godot/imported/walking.png-210c279fb56e382a6b74d81f29829028.ctex"]
+source_file="res://assets/player/Raven Fantasy - Pixelart Top Down Character Base/Raven Fantasy - Pixelart Top Down Character Base - Atalho/Extras/Watering Can.png"
+dest_files=["res://.godot/imported/Watering Can.png-e222207b8719cb2d7b2bb6358f2a7efe.ctex"]
 
 [params]
 

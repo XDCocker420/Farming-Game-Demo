@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqld8lomt1ovl"
-path="res://.godot/imported/walking left.png-298c507d2763c6fbf258a0ce42a11334.ctex"
+uid="uid://bn5rr0vsujqdc"
+path="res://.godot/imported/Shield.png-28a9d16f4da48f5cadf068147759940f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/walking left.png"
-dest_files=["res://.godot/imported/walking left.png-298c507d2763c6fbf258a0ce42a11334.ctex"]
+source_file="res://assets/player/Raven Fantasy - Pixelart Top Down Character Base/Raven Fantasy - Pixelart Top Down Character Base - Atalho/Extras/Shield.png"
+dest_files=["res://.godot/imported/Shield.png-28a9d16f4da48f5cadf068147759940f.ctex"]
 
 [params]
 
