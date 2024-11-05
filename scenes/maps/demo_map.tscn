@@ -359,4 +359,7 @@ position = Vector2(1181, 63)
 [node name="Fields" type="Node" parent="."]
 
 [node name="Field" parent="Fields" instance=ExtResource("6_2dxu5")]
-position = Vector2(515, 446)
+position = Vector2(384, 316)
+
+[node name="Field2" parent="Fields" instance=ExtResource("6_2dxu5")]
+position = Vector2(719, 316)
