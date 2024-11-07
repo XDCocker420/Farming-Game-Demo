@@ -47,12 +47,12 @@ func plant_new_crop(crop_name: String) -> bool:
 		print("Invalid crop type: ", crop_name)
 		return false
 		
-	current_crop = CropData.new()
-	current_crop.crop_type = crop
-	current_crop.growth_progress = 0.0
-	current_crop.current_stage = 0
-	current_crop.plant_time = Time.get_unix_time_from_system()
-	is_occupied = true
+	#current_crop = CropData.new()
+	#current_crop.crop_type = crop
+	#current_crop.growth_progress = 0.0
+	#current_crop.current_stage = 0
+	#current_crop.plant_time = Time.get_unix_time_from_system()
+	#is_occupied = true
 	#update_crop_appearance()
 	#crop_planted.emit(crop_name)
 	spawn()

@@ -23,19 +23,33 @@ func _ready() -> void:
 	print("Connecting to fields")
 	for field in get_tree().get_nodes_in_group("fields"):
 		if field is Field:
-			pass
+			field.player_entered.connect(_on_field_entered)
+			field.player_exited.connect(_on_field_exited)
 	#plant_crop.connect(CropManager._on_player_plant_crop)
 
 func _input(event: InputEvent) -> void:
 	# Check if the interaction key is pressed
 	if event.is_action_pressed("interact"):
 		interact.emit()
+		print(current_field)
 		if current_field:
 			current_field.try_interact(selected_crop)
 		else:
 			print("You can only plant on farming fields!")
 	if event.is_action_pressed("interact2"):
-		interact2.emit()	
+		interact2.emit()
+
+func _on_field_entered(field: Field) -> void:
+	print("Field entered: ", field.name)
+	current_field = field
+
+func _on_field_exited(field: Field) -> void:
+	print("Field exited: ", field.name)
+	if current_field == field:
+		current_field = null
+
+func set_selected_crop(crop_name: String) -> void:
+	selected_crop = crop_name
 
 func _physics_process(delta):
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")

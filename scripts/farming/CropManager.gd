@@ -10,7 +10,8 @@ func _ready():
 	get_fields()
 
 func _process(delta):
-	update_all_crops(delta)
+	#update_all_crops(delta)
+	pass
 
 func load_crop_types():
 	# Load crop definitions from configuration
