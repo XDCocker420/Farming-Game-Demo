@@ -80,5 +80,5 @@ func is_fully_grown() -> bool:
 func spawn() -> void:
 	var carrot = spawn_carrot.instantiate()
 	#global_position = get_global_mouse_position()
-	add_child(carrot)
+	#add_child(carrot)
 	add_sibling(carrot)
