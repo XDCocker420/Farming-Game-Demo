@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://7401yxdfc7e2"]
 
 [ext_resource type="TileSet" uid="uid://co6muqfq0ovmi" path="res://scenes/tiles/green_forest.tres" id="1_v0l7f"]
-[ext_resource type="TileSet" uid="uid://ckrpgnu5r4oj6" path="res://scenes/tiles/farmlands.tres" id="2_npsrw"]
+[ext_resource type="TileSet" uid="uid://d3vosk5ipeu5w" path="res://scenes/tiles/farmlands.tres" id="2_npsrw"]
 [ext_resource type="Texture2D" uid="uid://dsmbrw66740gf" path="res://assets/green_buildings/64x64.png" id="3_1jre1"]
 [ext_resource type="PackedScene" uid="uid://cfpp5sa7x3s7g" path="res://scenes/houses/basic_house.tscn" id="4_nqhpe"]
 [ext_resource type="PackedScene" uid="uid://cckq6n703hhfn" path="res://scenes/character/player.tscn" id="5_awv5p"]

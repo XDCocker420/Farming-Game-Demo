@@ -1,10 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bx0bq76463re1"]
 
 [ext_resource type="Texture2D" uid="uid://b5alookycpdxd" path="res://assets/farmlands/64x64.png" id="1_yksl6"]
-[ext_resource type="Texture2D" uid="uid://bf2kv8gxui3fe" path="res://assets/farmlands/Big_Door/Big_Door1.PNG" id="2_f7sok"]
-[ext_resource type="Texture2D" uid="uid://dir2w2enxgnre" path="res://assets/farmlands/Big_Door/Big_Door2.PNG" id="3_povtp"]
-[ext_resource type="Texture2D" uid="uid://bu4dj2jftcpqt" path="res://assets/farmlands/Big_Door/Big_Door3.PNG" id="4_c45ha"]
-[ext_resource type="Texture2D" uid="uid://d03w2nm4n0g5p" path="res://assets/farmlands/Big_Door/Big_Door4.PNG" id="5_ftf1j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g6eeo"]
 texture = ExtResource("1_yksl6")
@@ -8418,21 +8414,38 @@ texture = ExtResource("1_yksl6")
 sources/4 = SubResource("TileSetAtlasSource_g6eeo")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gw64n"]
+size = Vector2(180, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o47b"]
+atlas = ExtResource("1_yksl6")
+region = Rect2(960, 131, 192, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k34ie"]
+atlas = ExtResource("1_yksl6")
+region = Rect2(1152, 131, 192, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7m7yp"]
+atlas = ExtResource("1_yksl6")
+region = Rect2(1344, 131, 192, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h68a"]
+atlas = ExtResource("1_yksl6")
+region = Rect2(1536, 131, 192, 131)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0fsa1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_f7sok")
+"texture": SubResource("AtlasTexture_2o47b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_povtp")
+"texture": SubResource("AtlasTexture_k34ie")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_c45ha")
+"texture": SubResource("AtlasTexture_7m7yp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_ftf1j")
+"texture": SubResource("AtlasTexture_5h68a")
 }],
 "loop": true,
 "name": &"open",
@@ -8449,6 +8462,7 @@ layer_0/tile_data = PackedInt32Array(-393207, 1245188, 65, 393225, 1245188, 77, 
 [node name="DoorArea" type="Area2D" parent="TileMap"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/DoorArea"]
+position = Vector2(0, 144.5)
 shape = SubResource("RectangleShape2D_gw64n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TileMap/DoorArea"]
@@ -8456,4 +8470,4 @@ position = Vector2(0, 143)
 sprite_frames = SubResource("SpriteFrames_0fsa1")
 animation = &"open"
 frame = 3
-frame_progress = 0.225845
+frame_progress = 0.415801
