@@ -1,12 +1,16 @@
 [gd_scene load_steps=10 format=4 uid="uid://7401yxdfc7e2"]
 
 [ext_resource type="TileSet" uid="uid://co6muqfq0ovmi" path="res://scenes/tiles/green_forest.tres" id="1_v0l7f"]
-[ext_resource type="TileSet" uid="uid://ckrpgnu5r4oj6" path="res://scenes/tiles/farmlands.tres" id="2_npsrw"]
+[ext_resource type="TileSet" uid="uid://d3vosk5ipeu5w" path="res://scenes/tiles/farmlands.tres" id="2_npsrw"]
 [ext_resource type="Texture2D" uid="uid://dsmbrw66740gf" path="res://assets/green_buildings/64x64.png" id="3_1jre1"]
 [ext_resource type="PackedScene" uid="uid://cfpp5sa7x3s7g" path="res://scenes/houses/basic_house.tscn" id="4_nqhpe"]
 [ext_resource type="PackedScene" uid="uid://cckq6n703hhfn" path="res://scenes/character/player.tscn" id="5_awv5p"]
 [ext_resource type="PackedScene" uid="uid://0y5hanmykn2e" path="res://scenes/structures/field.tscn" id="6_2dxu5"]
+<<<<<<< HEAD
 [ext_resource type="Script" path="res://scripts/farming/Field.gd" id="7_jvgn5"]
+=======
+[ext_resource type="PackedScene" uid="uid://dj3x34xk3qcne" path="res://scenes/houses/scheune.tscn" id="6_7wefs"]
+>>>>>>> bill-learn
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dlyf5"]
 texture = ExtResource("3_1jre1")
@@ -356,6 +360,9 @@ tile_set = SubResource("TileSet_pxt3e")
 
 [node name="House" parent="TileMaps" instance=ExtResource("4_nqhpe")]
 position = Vector2(1181, 63)
+
+[node name="Scheune" parent="TileMaps" instance=ExtResource("6_7wefs")]
+position = Vector2(462, -295)
 
 [node name="Fields" type="Node" parent="."]
 
