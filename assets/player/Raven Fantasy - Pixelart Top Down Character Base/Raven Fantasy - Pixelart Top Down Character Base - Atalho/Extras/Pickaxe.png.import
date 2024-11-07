@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1i50kqtu6i4x"
-path="res://.godot/imported/idle.png-89a795d674ff15345971f5296c9aecd0.ctex"
+uid="uid://b3o0r4w1q2lkx"
+path="res://.godot/imported/Pickaxe.png-31bdb3124f2a197acbeccf5d507a35e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/idle.png"
-dest_files=["res://.godot/imported/idle.png-89a795d674ff15345971f5296c9aecd0.ctex"]
+source_file="res://assets/player/Raven Fantasy - Pixelart Top Down Character Base/Raven Fantasy - Pixelart Top Down Character Base - Atalho/Extras/Pickaxe.png"
+dest_files=["res://.godot/imported/Pickaxe.png-31bdb3124f2a197acbeccf5d507a35e3.ctex"]
 
 [params]
 

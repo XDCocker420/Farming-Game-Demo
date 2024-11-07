@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnog2ptmbpkvk"
-path="res://.godot/imported/walking right.png-92af366708399d7261c64a90d6d860d6.ctex"
+uid="uid://7oitnlubn4po"
+path="res://.godot/imported/Full Without Shadows.png-abadd6ac69cd977a5637d42a9482e817.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/walking right.png"
-dest_files=["res://.godot/imported/walking right.png-92af366708399d7261c64a90d6d860d6.ctex"]
+source_file="res://assets/player/Full Without Shadows.png"
+dest_files=["res://.godot/imported/Full Without Shadows.png-abadd6ac69cd977a5637d42a9482e817.ctex"]
 
 [params]
 

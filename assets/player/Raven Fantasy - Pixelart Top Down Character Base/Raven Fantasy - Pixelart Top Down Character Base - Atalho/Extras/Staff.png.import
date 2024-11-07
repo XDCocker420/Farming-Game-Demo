@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6p3hkbs0fuv3"
-path="res://.godot/imported/charakter.png-2d5e64a266519963f39e87a9abf8b54d.ctex"
+uid="uid://b26t8qbl45g2h"
+path="res://.godot/imported/Staff.png-6d397e4f45434c414e3460b7d0af01e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/charakter.png"
-dest_files=["res://.godot/imported/charakter.png-2d5e64a266519963f39e87a9abf8b54d.ctex"]
+source_file="res://assets/player/Raven Fantasy - Pixelart Top Down Character Base/Raven Fantasy - Pixelart Top Down Character Base - Atalho/Extras/Staff.png"
+dest_files=["res://.godot/imported/Staff.png-6d397e4f45434c414e3460b7d0af01e3.ctex"]
 
 [params]
 

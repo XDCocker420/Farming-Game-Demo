@@ -28,6 +28,7 @@ size = Vector2(43, 35)
 collision_layer = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -35)
 sprite_frames = SubResource("SpriteFrames_o2w53")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

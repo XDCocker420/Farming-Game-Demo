@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4pwfl7dgitot"
-path="res://.godot/imported/walking down.png-d68152509147e2c66e0ba9f7c4f84f9b.ctex"
+uid="uid://2wvnwfqxmhna"
+path="res://.godot/imported/Bow.png-b2aa22fab8a8b481a99bb81c71c85a65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/walking down.png"
-dest_files=["res://.godot/imported/walking down.png-d68152509147e2c66e0ba9f7c4f84f9b.ctex"]
+source_file="res://assets/player/Raven Fantasy - Pixelart Top Down Character Base/Raven Fantasy - Pixelart Top Down Character Base - Atalho/Extras/Bow.png"
+dest_files=["res://.godot/imported/Bow.png-b2aa22fab8a8b481a99bb81c71c85a65.ctex"]
 
 [params]
 
