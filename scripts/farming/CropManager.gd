@@ -48,6 +48,7 @@ func update_crop_growth(field: Field, delta: float):
 
 func plant_crop(field: Field, crop_name: String) -> bool:
 	print("Planting crop: ", crop_name)
+	
 	if field.can_plant() and crop_name in available_crops:
 		return field.plant_crop(available_crops[crop_name])
 	return false

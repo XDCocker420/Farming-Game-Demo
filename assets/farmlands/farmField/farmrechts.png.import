@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct7xh54ckqmpl"
-path="res://.godot/imported/Carrot2.png-4a1bfdfe8b26d8b26c100cd38527edc8.ctex"
+uid="uid://bwy0f3nufa83i"
+path="res://.godot/imported/farmrechts.png-34c5d6728c9e859b7cfb0e1e6a29bd12.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/farmlands/food/Carrot2.png"
-dest_files=["res://.godot/imported/Carrot2.png-4a1bfdfe8b26d8b26c100cd38527edc8.ctex"]
+source_file="res://assets/farmlands/farmField/farmrechts.png"
+dest_files=["res://.godot/imported/farmrechts.png-34c5d6728c9e859b7cfb0e1e6a29bd12.ctex"]
 
 [params]
 

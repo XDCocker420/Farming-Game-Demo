@@ -30,7 +30,7 @@ func _on_body_exited(body: Node2D) -> void:
 		player_exited.emit(self)
 		print("Player exited field: ", name)
 
-func try_interact(selected_crop: String = "wheat") -> void:
+func try_interact(selected_crop: String = "carrot") -> void:
 	if player_in_range:
 		if is_occupied and is_fully_grown():
 			harvest_crop()
@@ -53,8 +53,9 @@ func plant_new_crop(crop_name: String) -> bool:
 	current_crop.current_stage = 0
 	current_crop.plant_time = Time.get_unix_time_from_system()
 	is_occupied = true
-	update_crop_appearance()
-	crop_planted.emit(crop_name)
+	#update_crop_appearance()
+	#crop_planted.emit(crop_name)
+	spawn()
 	print("Planted: ", crop_name)
 	return true
 
@@ -75,12 +76,6 @@ func is_fully_grown() -> bool:
 		return current_crop.growth_progress >= 1.0
 	return false
 
-func update_crop_appearance() -> void:
-	if current_crop and sprite:
-		var stage_name = "%s_%d" % [current_crop.crop_type.crop_name, current_crop.current_stage]
-		var texture = load("res://assets/crops/%s.png" % stage_name)
-		if texture:
-			sprite.texture = texture
 
 func spawn() -> void:
 	var carrot = spawn_carrot.instantiate()

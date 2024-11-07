@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3ihihig4jn71"]
+
+[ext_resource type="Texture2D" uid="uid://bwy0f3nufa83i" path="res://assets/farmlands/farmField/farmrechts.png" id="1_33jaj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xcu3e"]
+size = Vector2(58, 60)
+
+[node name="FarmFieldRight" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_33jaj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = -1
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_xcu3e")

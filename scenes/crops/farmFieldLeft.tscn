@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://gs07mddrega3"]
+
+[ext_resource type="Texture2D" uid="uid://e5sxtaym0x7y" path="res://assets/farmlands/farmField/farmlinks.png" id="1_mgxau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oo8ah"]
+size = Vector2(61, 72)
+
+[node name="FarmFieldLeft" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 2
+z_index = -1
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_oo8ah")
+debug_color = Color(2.88785e-07, 0.590593, 0.751171, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mgxau")

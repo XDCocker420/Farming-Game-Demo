@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cri6prl6lptm8"]
+
+[ext_resource type="Texture2D" uid="uid://dunp7jjylogt6" path="res://assets/farmlands/farmField/farmmitte.png" id="1_kvf0a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mo1vq"]
+size = Vector2(64, 69)
+
+[node name="FarmFieldMiddle" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kvf0a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_mo1vq")
