@@ -12,7 +12,7 @@ var player_in_range: bool = false
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var crop_manager = get_node("/root/CropManager")
-@export var spawn_carrot = preload("res://scenes/structures/carrot.tscn")
+@export var spawn_carrot = load("res://scenes/structures/carrot.tscn")
 
 func _ready():
 	body_entered.connect(_on_body_entered)
@@ -79,4 +79,6 @@ func is_fully_grown() -> bool:
 
 func spawn() -> void:
 	var carrot = spawn_carrot.instantiate()
+	#global_position = get_global_mouse_position()
 	add_child(carrot)
+	add_sibling(carrot)

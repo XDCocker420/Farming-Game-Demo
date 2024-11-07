@@ -2,6 +2,7 @@ extends Node
 
 var fields: Array[Node] = []
 var available_crops: Dictionary = {}
+@export var spawn_carrot = load("res://scenes/structures/carrot.tscn")
 
 func _ready():
 	# Load all crop types
