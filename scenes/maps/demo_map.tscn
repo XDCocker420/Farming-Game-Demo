@@ -327,6 +327,7 @@ sources/0 = SubResource("TileSetAtlasSource_dlyf5")
 [node name="Demo Map" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("5_awv5p")]
+unique_name_in_owner = true
 z_index = 5
 position = Vector2(1180, 625)
 
@@ -359,7 +360,7 @@ position = Vector2(1181, 63)
 [node name="Fields" type="Node" parent="."]
 
 [node name="Field" parent="Fields" groups=["fields"] instance=ExtResource("6_2dxu5")]
-position = Vector2(384, 316)
+position = Vector2(510, 326)
 
 [node name="Field2" parent="Fields" groups=["fields"] instance=ExtResource("6_2dxu5")]
-position = Vector2(719, 316)
+position = Vector2(778, 316)
