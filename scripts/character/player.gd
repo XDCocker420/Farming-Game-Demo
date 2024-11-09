@@ -11,19 +11,31 @@ var looking_direction = "down"
 
 signal interact
 signal interact2
-signal plant_crop(crop_type, position)
+
+#signal plant_crop(crop_type, position)
 
 func _ready() -> void:
     # Add the player to the "Player" group for identification
     load_state()
     #Field.plant_crop.connect(CropManager._on_player_plant_crop)
     # Connect to all fields
-    print("Connecting to fields")
-    for field in get_tree().get_nodes_in_group("fields"):
-        if field is Field:
-            field.player_entered.connect(_on_field_entered)
-            field.player_exited.connect(_on_field_exited)
+    
+    
+    
+    
+    # print("Connecting to fields")
+    # for field in get_tree().get_nodes_in_group("fields"):
+    #     if field is Field:
+    #         field.player_entered.connect(_on_field_entered)
+    #         field.player_exited.connect(_on_field_exited)
+    
+    
+
+    
     #plant_crop.connect(CropManager._on_player_plant_crop)
+
+
+
 
 func _input(event: InputEvent) -> void:
     # Check if the interaction key is pressed
@@ -37,19 +49,26 @@ func _input(event: InputEvent) -> void:
     if event.is_action_pressed("interact2"):
         interact2.emit()
 
-func _on_field_entered(field: Field) -> void:
-    print("Field entered: ", field.name)
-    current_field = field
 
-func _on_field_exited(field: Field) -> void:
-    print("Field exited: ", field.name)
-    if current_field == field:
-        current_field = null
+
+
+# func _on_field_entered(field: Field) -> void:
+#     print("Field entered: ", field.name)
+#     current_field = field
+
+# func _on_field_exited(field: Field) -> void:
+#     print("Field exited: ", field.name)
+#     if current_field == field:
+#         current_field = null
+
+
+
 
 func set_selected_crop(crop_name: String) -> void:
     selected_crop = crop_name
 
-func _physics_process(delta):
+
+func _physics_process(delta: float) -> void:
     var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
     velocity = direction * speed
 
