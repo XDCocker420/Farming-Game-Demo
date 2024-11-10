@@ -5,7 +5,7 @@ class_name Field
 var in_area: bool = false
 
 @onready var player: CharacterBody2D = get_tree().get_nodes_in_group("Player")[0]
-var carrot_scene = preload("res://scenes/structures/carrot.tscn")
+@onready var carrot_scene = preload("res://scenes/structures/carrot.tscn")
 
 
 func _ready() -> void:
