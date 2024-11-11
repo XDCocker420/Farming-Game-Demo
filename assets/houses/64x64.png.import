@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2n5ynbcf7tb7"
-path="res://.godot/imported/Full Without Shadows.png-2d51fb681368a0e2dcb01422c501a92b.ctex"
+uid="uid://dvdxnygaem23y"
+path="res://.godot/imported/64x64.png-9083364f44c047a19e91afa659c27023.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/Raven Fantasy - Pixelart Top Down Character Base/Raven Fantasy - Pixelart Top Down Character Base - Atalho/Base/Full Without Shadows.png"
-dest_files=["res://.godot/imported/Full Without Shadows.png-2d51fb681368a0e2dcb01422c501a92b.ctex"]
+source_file="res://assets/houses/64x64.png"
+dest_files=["res://.godot/imported/64x64.png-9083364f44c047a19e91afa659c27023.ctex"]
 
 [params]
 
