@@ -2,42 +2,39 @@ extends Area2D
 
 
 var in_area: bool = false
+var crop:Node
 
 @onready var player: CharacterBody2D = get_tree().get_nodes_in_group("Player")[0]
 @onready var carrot_scene = preload("res://scenes/structures/carrot.tscn")
 
 
 func _ready() -> void:
-    body_entered.connect(_on_body_entered)
-    body_exited.connect(_on_body_exited)
-    player.interact.connect(_on_player_interact)
-
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
+	player.interact.connect(_on_player_interact)
+	
 
 func _on_body_entered(body: Node) -> void:
-    if body.is_in_group("Player"):
-        in_area = true
+	if body.is_in_group("Player"):
+		in_area = true
 
 
 func _on_body_exited(body: Node) -> void:
-    if body.is_in_group("Player"):
-        in_area = false
+	if body.is_in_group("Player"):
+		in_area = false
 
 
 func _on_player_interact() -> void:
-    if in_area:
-        plant()
+	if in_area:
+		plant()
 
 
 func plant() -> void:
-    if not get_node_or_null("Carrot"):
-        var carrot = carrot_scene.instantiate()
-        add_child(carrot)
-
-
-
-
-
-
+	if not get_node_or_null("Carrot"):
+		crop = carrot_scene.instantiate()
+		add_child(crop)
+	#else:
+			#crop.queue_free()
 
 
 
@@ -98,12 +95,12 @@ func plant() -> void:
 #     if not can_plant():
 #         print("Cannot plant here")
 #         return false
-        
+		
 #     var crop = crop_manager.get_crop_type(crop_name)
 #     if not crop:
 #         print("Invalid crop type: ", crop_name)
 #         return false
-        
+		
 #     #current_crop = CropData.new()
 #     #current_crop.crop_type = crop
 #     #current_crop.growth_progress = 0.0

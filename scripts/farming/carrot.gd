@@ -2,23 +2,36 @@ extends AnimatedSprite2D
 
 
 @onready var timer: Timer = $Timer
+@onready var player: CharacterBody2D = get_tree().get_nodes_in_group("Player")[0]
 var state = 0
 
-
 func _ready() -> void:
-    play("grow 1")
-    timer.start()
+	timer.wait_time = CropManager.get_crop_time('carrot')
+	player.interact2.connect(_on_player_interact)
+	play("grow 1")
+	timer.start()
 
 
 func _on_timer_timeout() -> void:
-    if state == 2:
-        queue_free()
-    else:
-        state += 1
-        timer.start()
-        
-    if state == 1:
-        position.y -= 10
-        play("grow 2")
-    elif state == 2:
-        play("grow 3")
+	if state == 2:
+		#queue_free()
+		print('cools')
+	else:
+		state += 1
+		timer.start()
+		
+	if state == 1:
+		position.y -= 10
+		play("grow 2")
+	elif state == 2:
+		play("grow 3")
+		
+func _on_player_interact():
+	print('slay')
+	if state == 2:
+		queue_free()
+		
+func save_crop() -> void:
+	# save crops growth stage and time left on timer
+	SaveData.data["time_left"] = timer.time_left
+	SaveData.data["growth_stage"] = state
