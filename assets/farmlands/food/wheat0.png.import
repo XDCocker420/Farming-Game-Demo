@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct7xh54ckqmpl"
-path="res://.godot/imported/Carrot2.png-4a1bfdfe8b26d8b26c100cd38527edc8.ctex"
+uid="uid://drnd2dp4r6eau"
+path="res://.godot/imported/wheat0.png-f82927ef35a86bc26ea05272a0c7c259.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/farmlands/food/Carrot2.png"
-dest_files=["res://.godot/imported/Carrot2.png-4a1bfdfe8b26d8b26c100cd38527edc8.ctex"]
+source_file="res://assets/farmlands/food/wheat0.png"
+dest_files=["res://.godot/imported/wheat0.png-f82927ef35a86bc26ea05272a0c7c259.ctex"]
 
 [params]
 

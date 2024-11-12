@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct7xh54ckqmpl"
-path="res://.godot/imported/Carrot2.png-4a1bfdfe8b26d8b26c100cd38527edc8.ctex"
+uid="uid://d03w2nm4n0g5p"
+path="res://.godot/imported/Big_Door4.PNG-2a610ad9a6862e4f2a8710e1ce238b2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/farmlands/food/Carrot2.png"
-dest_files=["res://.godot/imported/Carrot2.png-4a1bfdfe8b26d8b26c100cd38527edc8.ctex"]
+source_file="res://assets/farmlands/Big_Door/Big_Door4.PNG"
+dest_files=["res://.godot/imported/Big_Door4.PNG-2a610ad9a6862e4f2a8710e1ce238b2c.ctex"]
 
 [params]
 

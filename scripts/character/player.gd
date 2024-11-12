@@ -2,34 +2,73 @@ extends CharacterBody2D
 
 
 @export var speed = 250  # Movement speed in pixels per second
-var looking_direction = "down"
-
+@onready var crop_manager = get_node("/root/CropManager")
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+var current_field: Field = null
+var selected_crop: String = "carrot"  # Default crop
+var looking_direction = "down"
 
 signal interact
 signal interact2
-signal plant_crop(crop_type, position)
+
+#signal plant_crop(crop_type, position)
 
 func _ready() -> void:
     # Add the player to the "Player" group for identification
-    add_to_group("Player")
     load_state()
-    plant_crop.connect(CropManager._on_player_plant_crop)
+    #Field.plant_crop.connect(CropManager._on_player_plant_crop)
+    # Connect to all fields
+    
+    
+    
+    
+    # print("Connecting to fields")
+    # for field in get_tree().get_nodes_in_group("fields"):
+    #     if field is Field:
+    #         field.player_entered.connect(_on_field_entered)
+    #         field.player_exited.connect(_on_field_exited)
+    
+    
+
+    
+    #plant_crop.connect(CropManager._on_player_plant_crop)
+
+
+
 
 func _input(event: InputEvent) -> void:
     # Check if the interaction key is pressed
     if event.is_action_pressed("interact"):
         interact.emit()
-        var mouse_position = get_global_mouse_position()
-        if CropManager.is_farming_field_tile(mouse_position):
-            var crop_type = CropManager.get_selected_crop_type()
-            plant_crop.emit(crop_type, mouse_position)
+        print(current_field)
+        if current_field:
+            current_field.try_interact(selected_crop)
         else:
             print("You can only plant on farming fields!")
     if event.is_action_pressed("interact2"):
-        interact2.emit()	
+        interact2.emit()
 
-func _physics_process(delta):
+
+
+
+# func _on_field_entered(field: Field) -> void:
+#     print("Field entered: ", field.name)
+#     current_field = field
+
+# func _on_field_exited(field: Field) -> void:
+#     print("Field exited: ", field.name)
+#     if current_field == field:
+#         current_field = null
+
+
+
+
+func set_selected_crop(crop_name: String) -> void:
+    selected_crop = crop_name
+
+
+func _physics_process(delta: float) -> void:
     var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
     velocity = direction * speed
 
@@ -47,26 +86,14 @@ func _physics_process(delta):
  
 
 func update_animation(direction: Vector2):
-    if looking_direction == "right":
-        if direction.x > 0:
-            sprite.play("walk_right")
-        else:
-            sprite.play("idle_right")
-    elif looking_direction == "left":
-        if direction.x < 0:
-            sprite.play("walk_left")
-        else:
-            sprite.play("idle_left")
-    elif looking_direction == "down":
-        if direction.y > 0:
-            sprite.play("walk_down")
-        else:
-            sprite.play("idle_down")
-    elif looking_direction == "up":
-        if direction.y < 0:
-            sprite.play("walk_up")
-        else:
-            sprite.play("idle_up")
+    # Determine animation prefix (walk or idle)
+    var animation_type = "walk" if direction.length() > 0 else "idle"
+    
+    # Combine animation type with current looking direction
+    var animation_name = animation_type + "_" + looking_direction
+    
+    # Play the animation
+    sprite.play(animation_name)
 
 
 ## SAVE FUNCTIONS

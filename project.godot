@@ -24,6 +24,10 @@ CropManager="*res://scripts/farming/CropManager.gd"
 
 project/assembly_name="Farming Game Demo"
 
+[global_group]
+
+Player=""
+
 [input]
 
 ui_accept={

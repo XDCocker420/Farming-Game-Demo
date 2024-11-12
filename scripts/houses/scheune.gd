@@ -1,7 +1,7 @@
 extends TileMapLayer
 
 
-@onready var e_button: AnimatedSprite2D = $AnimatedSprite2D3
+@onready var e_button: AnimatedSprite2D = $AnimatedSprite2D2
 @onready var door: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: CharacterBody2D = %Player
 
@@ -24,17 +24,17 @@ func _on_player_interact():
             open = false
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_door_area_body_entered(body):
     if body.is_in_group("Player"):
         e_button.visible = true
         in_area = true
 
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
+func _on_door_area_body_exited(body):
     if body.is_in_group("Player"):
         e_button.visible = false
         in_area = false
         
         if open:
-            door.play_backwards("open")
+            door.play("close")
             open = false

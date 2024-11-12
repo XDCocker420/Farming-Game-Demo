@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://0y5hanmykn2e"]
+
+[ext_resource type="PackedScene" uid="uid://gs07mddrega3" path="res://scenes/crops/farmFieldLeft.tscn" id="3_k2eon"]
+[ext_resource type="PackedScene" uid="uid://cri6prl6lptm8" path="res://scenes/crops/farmFieldMiddle.tscn" id="4_a682d"]
+[ext_resource type="PackedScene" uid="uid://d3ihihig4jn71" path="res://scenes/crops/farmFieldRight.tscn" id="5_6lk6o"]
+
+[node name="Field" type="Area2D"]
+
+[node name="FarmFieldLeft" parent="." instance=ExtResource("3_k2eon")]
+position = Vector2(32, -29)
+
+[node name="FarmFieldMiddle" parent="." instance=ExtResource("4_a682d")]
+position = Vector2(94, -28)
+
+[node name="FarmFieldRight" parent="." instance=ExtResource("5_6lk6o")]
+position = Vector2(155, -28)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
