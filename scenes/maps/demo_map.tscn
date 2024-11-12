@@ -3,12 +3,12 @@
 [ext_resource type="TileSet" uid="uid://co6muqfq0ovmi" path="res://scenes/tiles/green_forest.tres" id="1_v0l7f"]
 [ext_resource type="TileSet" uid="uid://ckrpgnu5r4oj6" path="res://scenes/tiles/farmlands.tres" id="2_npsrw"]
 [ext_resource type="Texture2D" uid="uid://dsmbrw66740gf" path="res://assets/green_buildings/64x64.png" id="3_1jre1"]
-[ext_resource type="TileSet" uid="uid://dn4ftgxublsjm" path="res://scenes/tiles/beach.tres" id="3_ki4rm"]
+[ext_resource type="TileSet" uid="uid://cdsef44lf61t3" path="res://scenes/tiles/beach.tres" id="3_ki4rm"]
 [ext_resource type="PackedScene" uid="uid://cfpp5sa7x3s7g" path="res://scenes/houses/basic_house.tscn" id="4_nqhpe"]
 [ext_resource type="PackedScene" uid="uid://cckq6n703hhfn" path="res://scenes/character/player.tscn" id="5_awv5p"]
 [ext_resource type="PackedScene" uid="uid://0y5hanmykn2e" path="res://scenes/structures/field.tscn" id="6_2dxu5"]
-[ext_resource type="PackedScene" uid="uid://byeg8hl7p8im4" path="res://scenes/houses/leuchtturm.tscn" id="8_q4vsu"]
-[ext_resource type="PackedScene" uid="uid://krfi0tvvda7s" path="res://scenes/houses/basic_house_2.tscn" id="9_s2ikp"]
+[ext_resource type="PackedScene" path="res://scenes/houses/leuchtturm.tscn" id="8_q4vsu"]
+[ext_resource type="PackedScene" path="res://scenes/houses/basic_house_2.tscn" id="9_s2ikp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dlyf5"]
 texture = ExtResource("3_1jre1")
@@ -388,4 +388,4 @@ position = Vector2(3805, 325)
 position = Vector2(497, 318)
 
 [node name="Field2" parent="Fields" instance=ExtResource("6_2dxu5")]
-position = Vector2(789, 308)
+position = Vector2(794, 323)

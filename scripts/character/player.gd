@@ -5,7 +5,6 @@ extends CharacterBody2D
 @onready var crop_manager = get_node("/root/CropManager")
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-var current_field: Field = null
 var selected_crop: String = "carrot"  # Default crop
 var looking_direction = "down"
 
@@ -41,11 +40,11 @@ func _input(event: InputEvent) -> void:
     # Check if the interaction key is pressed
     if event.is_action_pressed("interact"):
         interact.emit()
-        print(current_field)
-        if current_field:
-            current_field.try_interact(selected_crop)
-        else:
-            print("You can only plant on farming fields!")
+        # print(current_field)
+        # if current_field:
+        #     current_field.try_interact(selected_crop)
+        # else:
+        #     print("You can only plant on farming fields!")
     if event.is_action_pressed("interact2"):
         interact2.emit()
 
