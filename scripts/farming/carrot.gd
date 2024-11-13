@@ -3,11 +3,14 @@ extends AnimatedSprite2D
 
 @onready var timer: Timer = $Timer
 @onready var player: CharacterBody2D = get_tree().get_nodes_in_group("Player")[0]
+@onready var field: Area2D = get_parent()
+
 var state = 0
+
 
 func _ready() -> void:
 	timer.wait_time = CropManager.get_crop_time('carrot')
-	player.interact2.connect(_on_player_interact)
+	player.interact.connect(_on_player_interact)
 	play("grow 1")
 	timer.start()
 
@@ -25,12 +28,13 @@ func _on_timer_timeout() -> void:
 		play("grow 2")
 	elif state == 2:
 		play("grow 3")
-		
+
+
 func _on_player_interact():
-	print('slay')
-	if state == 2:
+	if state == 2 and field.player_in_area == true:
 		queue_free()
-		
+
+
 func save_crop() -> void:
 	# save crops growth stage and time left on timer
 	SaveData.data["time_left"] = timer.time_left
