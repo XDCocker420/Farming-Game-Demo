@@ -7,12 +7,12 @@ extends TileMapLayer
 
 var in_area = false
 var open = false
-var storage_amount = 0
+#var storage_amount = 0
 const MAX_STORAGE = 10
 
 func _ready() -> void:
-	storage_amount = SaveData.data['player']['inventory']
-	print(storage_amount)
+	#if not 'inventory' in SaveData.data:
+		#SaveData.data['player']['inventory']
 	e_button.visible = false
 	storage_label.visible = false
 	player.interact.connect(_on_player_interact)
@@ -26,11 +26,9 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("store_increase") and in_area and open:
-		storage_amount = SaveData.data['player']['inventory']
-		if storage_amount < MAX_STORAGE:
-			storage_amount += 1
+		if SaveData.data['inventory'] < MAX_STORAGE:
+			#SaveData.data['player']['inventory'] += 1
 			update_storage_text()
-			SaveData.data['player']['inventory'] = storage_amount
 
 func _on_player_interact():
 	if in_area:
@@ -38,7 +36,6 @@ func _on_player_interact():
 			door.play("open")
 			open = true
 			storage_label.visible = true
-			storage_amount = SaveData.data['player']['inventory']
 			update_storage_text()
 		else:
 			door.play_backwards("open")
@@ -47,13 +44,12 @@ func _on_player_interact():
 
 func _on_player_interact2():
 	if in_area and open:
-		if storage_amount > 0:
-			storage_amount -= 1
+		if SaveData.data['inventory'] > 0:
+			#SaveData.data['inventory'] -= 1
 			update_storage_text()
-			SaveData.data['player']['inventory'] = storage_amount
 
 func update_storage_text() -> void:
-	storage_label.text = "Lager: %d von %d" % [storage_amount, MAX_STORAGE]
+	storage_label.text = "Lager: %d von %d" % [SaveData.data['inventory'], MAX_STORAGE]
 
 func _on_door_area_body_entered(body):
 	if body.is_in_group("Player"):
