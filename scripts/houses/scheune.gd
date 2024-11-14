@@ -11,6 +11,8 @@ var storage_amount = 0
 const MAX_STORAGE = 10
 
 func _ready() -> void:
+	storage_amount = SaveData.data['player']['inventory']
+	print(storage_amount)
 	e_button.visible = false
 	storage_label.visible = false
 	player.interact.connect(_on_player_interact)
@@ -24,9 +26,11 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("store_increase") and in_area and open:
+		storage_amount = SaveData.data['player']['inventory']
 		if storage_amount < MAX_STORAGE:
 			storage_amount += 1
 			update_storage_text()
+			SaveData.data['player']['inventory'] = storage_amount
 
 func _on_player_interact():
 	if in_area:
@@ -34,6 +38,7 @@ func _on_player_interact():
 			door.play("open")
 			open = true
 			storage_label.visible = true
+			storage_amount = SaveData.data['player']['inventory']
 			update_storage_text()
 		else:
 			door.play_backwards("open")
@@ -45,6 +50,7 @@ func _on_player_interact2():
 		if storage_amount > 0:
 			storage_amount -= 1
 			update_storage_text()
+			SaveData.data['player']['inventory'] = storage_amount
 
 func update_storage_text() -> void:
 	storage_label.text = "Lager: %d von %d" % [storage_amount, MAX_STORAGE]
