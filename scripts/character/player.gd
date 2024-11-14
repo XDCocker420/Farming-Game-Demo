@@ -68,17 +68,18 @@ func update_animation(direction: Vector2):
 ## SAVE FUNCTIONS
 func save_state() -> void:
     # Save player's position
-    SaveData.data["player_positionX"] = global_position.x
-    SaveData.data["player_positionY"] = global_position.y
+    SaveData.data["player"]['pos_x'] = global_position.x
+    SaveData.data["player"]['pos_y'] = global_position.y
 
 
 func load_state() -> void:
     # Load player's position
-    if "player_positionX" in SaveData.data || "player_positionY" in SaveData.data:
+    print(SaveData.data.values()[1])
+    if SaveData.data.values()[1] != {}:
         print("Player position loaded.")
         global_position = Vector2(
-            SaveData.data["player_positionX"],
-            SaveData.data["player_positionY"]
+            SaveData.data["player"]['pos_x'],
+            SaveData.data["player"]['pos_y']
         )
 
 

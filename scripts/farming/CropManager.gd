@@ -25,7 +25,6 @@ func get_crop_value(crop_name:String):
 
 
 
-
 """
 var fields: Array[Node] = []
 var available_crops: Dictionary = {}

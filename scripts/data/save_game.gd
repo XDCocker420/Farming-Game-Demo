@@ -1,7 +1,7 @@
 extends Node
 
 # Dictionary to store game state data
-var data: Dictionary = {}
+var data: Dictionary = {'player':{}, 'crops':{}}
 
 # File path for saving and loading
 const SAVE_FILE_PATH: String = "user://savegame.save"
