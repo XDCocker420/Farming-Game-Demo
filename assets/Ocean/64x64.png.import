@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqld8lomt1ovl"
-path="res://.godot/imported/walking left.png-298c507d2763c6fbf258a0ce42a11334.ctex"
+uid="uid://dnafqd4hp218j"
+path="res://.godot/imported/64x64.png-acc814289a3ff4555e37d36743d2dee4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/walking left.png"
-dest_files=["res://.godot/imported/walking left.png-298c507d2763c6fbf258a0ce42a11334.ctex"]
+source_file="res://assets/Ocean/64x64.png"
+dest_files=["res://.godot/imported/64x64.png-acc814289a3ff4555e37d36743d2dee4.ctex"]
 
 [params]
 

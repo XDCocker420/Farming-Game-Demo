@@ -1,85 +1,87 @@
 extends CharacterBody2D
 
+
 @export var speed = 250  # Movement speed in pixels per second
+@onready var crop_manager = get_node("/root/CropManager")
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+var selected_crop: String = "carrot"  # Default crop
+var looking_direction = "down"
 
 signal interact
 signal interact2
-signal plant_crop(crop_type, position)
+
+# signal plant_crop(crop_type, position)
+
 
 func _ready() -> void:
 	# Add the player to the "Player" group for identification
-	add_to_group("Player")
 	load_state()
-	plant_crop.connect(CropManager._on_player_plant_crop)
+	
+	
+	
+	
+	# print("Connecting to fields")
+	# for field in get_tree().get_nodes_in_group("fields"):
+	#     if field is Field:
+	#         field.player_entered.connect(_on_field_entered)
+	#         field.player_exited.connect(_on_field_exited)
+	
+
 
 func _input(event: InputEvent) -> void:
 	# Check if the interaction key is pressed
 	if event.is_action_pressed("interact"):
 		interact.emit()
-		var mouse_position = get_global_mouse_position()
-		if CropManager.is_farming_field_tile(mouse_position):
-			var crop_type = CropManager.get_selected_crop_type()
-			plant_crop.emit(crop_type, mouse_position)
-		else:
-			print("You can only plant on farming fields!")
+		
 	if event.is_action_pressed("interact2"):
-		interact2.emit()	
+		interact2.emit()
+		
 
-func _physics_process(delta):
-	velocity = Vector2.ZERO  # Reset velocity each frame
+func set_selected_crop(crop_name: String) -> void:
+	selected_crop = crop_name
 
-	# Input handling for WASD keys
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("move_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1
 
-	# Normalize velocity to prevent faster diagonal movement
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+func _physics_process(delta: float) -> void:
+	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	velocity = direction * speed
 
-	# Move the player by updating position
-	position += velocity * delta
+	if direction.x > 0:
+		looking_direction = "right"
+	elif direction.x < 0:
+		looking_direction = "left"
+	elif direction.y > 0:
+		looking_direction = "down"
+	elif direction.y < 0:
+		looking_direction = "up"
 
-	# Animation handling
-	update_animation(velocity)
+	update_animation(direction)
 	move_and_slide()
-
-
-func update_animation(speedV):
-	if speedV.x > 0:
-		$AnimatedSprite2D.play("walk_right")
-	elif speedV.x < 0:
-		$AnimatedSprite2D.play("walk_left")
-	elif speedV.y > 0:
-		$AnimatedSprite2D.play("walk_down")
-	elif speedV.y < 0:
-		$AnimatedSprite2D.play("walk_up")
-	else:
-		$AnimatedSprite2D.play("idle")
  
 
-
+func update_animation(direction: Vector2):
+	var animation_type = "walk" if direction.length() > 0 else "idle"
+	var animation_name = animation_type + "_" + looking_direction
+	sprite.play(animation_name)
 
 
 ## SAVE FUNCTIONS
 func save_state() -> void:
 	# Save player's position
-	SaveData.data["player_positionX"] = global_position.x
-	SaveData.data["player_positionY"] = global_position.y
+	SaveData.data["player"]['pos_x'] = global_position.x
+	SaveData.data["player"]['pos_y'] = global_position.y
+
 
 func load_state() -> void:
 	# Load player's position
-	if "player_positionX" in SaveData.data || "player_positionY" in SaveData.data:
+	print(SaveData.data.values()[1])
+	if 'pos_x' in SaveData.data['player'] || 'pos_y' in SaveData.data['player']:
 		print("Player position loaded.")
 		global_position = Vector2(
-			SaveData.data["player_positionX"],
-			SaveData.data["player_positionY"]
+			SaveData.data["player"]['pos_x'],
+			SaveData.data["player"]['pos_y']
 		)
+
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:

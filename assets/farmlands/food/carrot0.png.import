@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6p3hkbs0fuv3"
-path="res://.godot/imported/charakter.png-2d5e64a266519963f39e87a9abf8b54d.ctex"
+uid="uid://dq382hwktac5y"
+path="res://.godot/imported/carrot0.png-5c9a250f88041bdca09820a9759d64a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/charakter.png"
-dest_files=["res://.godot/imported/charakter.png-2d5e64a266519963f39e87a9abf8b54d.ctex"]
+source_file="res://assets/farmlands/food/carrot0.png"
+dest_files=["res://.godot/imported/carrot0.png-5c9a250f88041bdca09820a9759d64a2.ctex"]
 
 [params]
 

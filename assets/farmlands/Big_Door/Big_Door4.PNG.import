@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fxqlno7oewym"
-path="res://.godot/imported/walking up.png-787e4252b8ff4a3e4cdd6991dbba1963.ctex"
+uid="uid://d03w2nm4n0g5p"
+path="res://.godot/imported/Big_Door4.PNG-2a610ad9a6862e4f2a8710e1ce238b2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/walking up.png"
-dest_files=["res://.godot/imported/walking up.png-787e4252b8ff4a3e4cdd6991dbba1963.ctex"]
+source_file="res://assets/farmlands/Big_Door/Big_Door4.PNG"
+dest_files=["res://.godot/imported/Big_Door4.PNG-2a610ad9a6862e4f2a8710e1ce238b2c.ctex"]
 
 [params]
 

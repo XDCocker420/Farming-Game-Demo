@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4pwfl7dgitot"
-path="res://.godot/imported/walking down.png-d68152509147e2c66e0ba9f7c4f84f9b.ctex"
+uid="uid://dir2w2enxgnre"
+path="res://.godot/imported/Big_Door2.PNG-a0449db4ca866cd1bc378dcf37c9af1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/walking down.png"
-dest_files=["res://.godot/imported/walking down.png-d68152509147e2c66e0ba9f7c4f84f9b.ctex"]
+source_file="res://assets/farmlands/Big_Door/Big_Door2.PNG"
+dest_files=["res://.godot/imported/Big_Door2.PNG-a0449db4ca866cd1bc378dcf37c9af1b.ctex"]
 
 [params]
 

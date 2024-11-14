@@ -1,10 +1,10 @@
 extends Node
 
 # Dictionary to store game state data
-var data: Dictionary = {}
+var data: Dictionary = {'player':{}, 'crops':{}, 'inventory':{}}
 
 # File path for saving and loading
-const SAVE_FILE_PATH: String = "user://savegame.json"
+const SAVE_FILE_PATH: String = "user://savegame.save"
 
 # Auto-save interval in seconds
 const AUTO_SAVE_INTERVAL: float = 60.0  # Save every 60 seconds

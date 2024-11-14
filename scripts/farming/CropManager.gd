@@ -1,146 +1,86 @@
-# CropManager.gd
 extends Node
 
-const MAX_GROWTH_STAGES = 5
 
-# Load crop properties from a separate script
-var crop_properties = preload("res://scripts/farming/crop_properties.gd").CROP_PROPERTIES
+var config = ConfigFile.new()
 
-var crops = {}  # Dictionary to store all crop data
-var update_timer = 0.0
-var UPDATE_INTERVAL = 1.0  # Update every second
+
+func _ready() -> void:
+	var err = config.load("res://scripts/farming/crops_config.cfg")
+
+	# If the file didn't load, ignore it.
+	if err != OK:
+		return
+
+
+func get_crop_time(crop_name:String):
+	return config.get_value(crop_name, 'growth_time')
+
+
+func get_crop_value(crop_name:String):
+	return config.get_value(crop_name, 'value')
+
+
+
+
+
+
+
+"""
+var fields: Array[Node] = []
+var available_crops: Dictionary = {}
+@export var spawn_carrot = load("res://scenes/structures/carrot.tscn")
 
 func _ready():
-	load_crops()
-	is_time_jump_detected()  # Check for time manipulation
+	# Load all crop types
+	load_crop_types()
+	# Get all field references
+	get_fields()
+	
 
-func load_crops():
-	var saved_crops = SaveData.data.get("crops", {})
-	for crop_id in saved_crops.keys():
-		var crop_data = saved_crops[crop_id]
-		crops[crop_id] = crop_data
-		instantiate_crop(crop_id, crop_data)
+func load_crop_types():
+	# Load crop definitions from configuration
+	var config = ConfigFile.new()
+	config.load("res://scripts/farming/crops_config.cfg")
+	for crop_name in config.get_sections():
+		var crop = Crop.new()
+		crop.crop_name = crop_name
+		crop.growth_time = config.get_value(crop_name, "growth_time")
+		crop.growth_stages = config.get_value(crop_name, "growth_stages")
+		crop.value = config.get_value(crop_name, "value")
+		available_crops[crop_name] = crop
 
-func instantiate_crop(crop_id, crop_data):
-	var crop_scene = preload("res://scenes/crops/crop.tscn")
-	var crop_instance = crop_scene.instantiate()
-	crop_instance.position = crop_data["position"]
-	crop_instance.crop_id = crop_id
-	crop_instance.crop_type = crop_data["crop_type"]
-	var growth_stage = calculate_growth_stage(crop_data)
-	crop_instance.set_growth_stage(growth_stage)
-	add_child(crop_instance)
-	crops[crop_id]["instance"] = crop_instance
-	crops[crop_id]["growth_stage"] = growth_stage
+func get_fields():
+	# Find all Field nodes in the scene
+	fields = get_tree().get_nodes_in_group("fields")
 
-func _on_crop_request_harvest(crop_id):
-	harvest_crop(crop_id)
+# func update_all_crops(delta):
+#     for field in fields:
+#         if field.current_crop:
+#             update_crop_growth(field, delta)
 
-func _on_player_plant_crop(crop_type, position):
-	plant_crop(crop_type, position)
+# func update_crop_growth(field: Field, delta: float):
+#     var crop_data = field.current_crop
+#         # Calculate growth progress
+#     var growth_rate = 1.0 / crop_data.crop_type.growth_time
+#     crop_data.growth_progress += delta * growth_rate
+		
+#         # Update growth stage
+#     var new_stage = floor(crop_data.growth_progress * 
+#         crop_data.crop_type.growth_stages)
+#     if new_stage != crop_data.current_stage:
+#         crop_data.current_stage = new_stage
+#         field.update_crop_appearance()
 
-func _process(delta):
-	update_timer += delta
-	if update_timer >= UPDATE_INTERVAL:
-		update_all_crops()
-		update_timer = 0.0
+# func plant_crop(field: Field, crop_name: String) -> bool:
+#     print("Planting crop: ", crop_name)
+	
+#     if field.can_plant() and crop_name in available_crops:
+#         return field.plant_crop(available_crops[crop_name])
+#     return false
 
-func update_all_crops():
-	var current_time = Time.get_unix_time_from_system()
-	for crop_id in crops.keys():
-		var crop_data = crops[crop_id]
-		var elapsed_time = current_time - crop_data["plant_time"]
-		var new_growth_stage = calculate_growth_stage(crop_data, elapsed_time)
-		if new_growth_stage != crop_data["growth_stage"]:
-			crop_data["growth_stage"] = new_growth_stage
-			var crop_instance = crop_data["instance"]
-			if crop_instance:
-				crop_instance.set_growth_stage(new_growth_stage)
-	SaveData.data["crops"] = crops
+# func harvest_crop(field: Field) -> CropData:
+#     return field.harvest()
 
-func calculate_growth_stage(crop_data, elapsed_time = null):
-	if elapsed_time == null:
-		elapsed_time = Time.get_unix_time_from_system() - crop_data["plant_time"]
-	var crop_type = crop_data["crop_type"]
-	var total_growth_time = get_total_growth_time(crop_type)
-	var max_stages = crop_properties.get(crop_type, {}).get("max_growth_stages", MAX_GROWTH_STAGES)
-	var growth_percent = min(elapsed_time / total_growth_time, 1.0)
-	var growth_stage = floor(growth_percent * max_stages)
-	return growth_stage
-
-func get_total_growth_time(crop_type):
-	return crop_properties.get(crop_type, {}).get("growth_time", 60)
-
-func plant_crop(crop_type, position):
-	var crop_id = generate_unique_crop_id()
-	var crop_data = {
-		"crop_type": crop_type,
-		"plant_time": Time.get_unix_time_from_system(),
-		"position": position,
-		"growth_stage": 0
-	}
-	crops[crop_id] = crop_data
-	SaveData.data["crops"][crop_id] = crop_data
-	instantiate_crop(crop_id, crop_data)
-
-func generate_unique_crop_id():
-	return str(Time.get_unix_time_from_system()) + "_" + str(randi())
-
-func harvest_crop(crop_id):
-	var crop_data = crops.get(crop_id)
-	if crop_data:
-		# Handle harvesting logic (e.g., give resources to the player)
-		var crop_instance = crop_data.get("instance")
-		if crop_instance:
-			crop_instance.queue_free()
-		crops.erase(crop_id)
-		SaveData.data["crops"].erase(crop_id)
-
-func is_time_jump_detected():
-	var last_saved_time = SaveData.data.get("last_saved_time", Time.get_unix_time_from_system())
-	var current_time = Time.get_unix_time_from_system()
-	var time_difference = current_time - last_saved_time
-	var MAX_ALLOWED_TIME_DIFFERENCE = 86400  # 24 hours in seconds
-	if time_difference < 0 or time_difference > MAX_ALLOWED_TIME_DIFFERENCE:
-		# Handle the time jump (e.g., cap the growth, warn the player)
-		print("Time jump detected!")
-		# Adjust plant_time to prevent instant growth
-		for crop_id in crops.keys():
-			var crop_data = crops[crop_id]
-			crop_data["plant_time"] += time_difference
-	SaveData.data["last_saved_time"] = current_time
-
-func is_farming_field_tile(position):
-	var tilemaps_node = get_node("/root/Demo Map/TileMaps")  # Adjust the path to your TileMap
-	 # Access the TileMap node for farming fields
-	var farming_tilemap = tilemaps_node.get_node("FarmField")  # Replace with your TileMap node name
-
-	if not farming_tilemap:
-		print("FarmingFieldTileMap not found.")
-		return false
-
-	# Convert global position to the farming TileMap's local coordinates
-	var local_position = farming_tilemap.to_local(position)
-	var tilemap_position = farming_tilemap.local_to_map(local_position)
-
-	# Get the cell ID at the tilemap position
-	var cell_id = farming_tilemap.get_cell_source_id(tilemap_position)
-	print(cell_id)
-	if cell_id != -1:
-		var tileset = farming_tilemap.get_meta("is_farming_field")
-		print(tileset)
-		# Get the source ID of the tile at the position
-		#var source_id = farming_tilemap.get_cell_tileset_source_id(tilemap_position)
-		#var tile_source = tileset.get_source(source_id)
-
-		#if tile_source:
-		#	var tile_definition = tile_source.tiles.get(cell_id)
-#			if tile_definition:
-#				var custom_data = tile_definition.custom_data
-#				if custom_data.has("is_farming_field"):
-#					return custom_data["is_farming_field"]
-		return tileset
-	return false
-
-func _set_selected_crop_type(crop_type):
-	pass
+# func get_crop_type(crop_name: String) -> Crop:
+#     return available_crops["wheat"]
+"""
