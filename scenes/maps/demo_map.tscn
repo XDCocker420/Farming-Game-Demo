@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cckq6n703hhfn" path="res://scenes/character/player.tscn" id="5_awv5p"]
 [ext_resource type="PackedScene" uid="uid://0y5hanmykn2e" path="res://scenes/structures/field.tscn" id="6_2dxu5"]
 [ext_resource type="PackedScene" uid="uid://byeg8hl7p8im4" path="res://scenes/houses/leuchtturm.tscn" id="8_q4vsu"]
-[ext_resource type="PackedScene" uid="uid://c7ehoe52begwa" path="res://scenes/houses/big_house.tscn" id="9_6fefn"]
 [ext_resource type="PackedScene" uid="uid://krfi0tvvda7s" path="res://scenes/houses/basic_house_2.tscn" id="9_s2ikp"]
+[ext_resource type="PackedScene" uid="uid://cx38brp8xauk7" path="res://scenes/houses/big_house_1.tscn" id="10_bofys"]
 [ext_resource type="PackedScene" uid="uid://cdh1cx6td10f0" path="res://scenes/houses/basic_house_3.tscn" id="10_lje7w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dlyf5"]
@@ -381,14 +381,14 @@ position = Vector2(1181, 63)
 [node name="Leuchtturm" parent="TileMaps" instance=ExtResource("8_q4vsu")]
 position = Vector2(5398, 2861)
 
-[node name="Basic_House2" parent="TileMaps" instance=ExtResource("9_s2ikp")]
-position = Vector2(3805, 325)
-
-[node name="BigHouse" parent="TileMaps" instance=ExtResource("9_6fefn")]
-position = Vector2(5310, 413)
-
 [node name="Basic_House_3" parent="TileMaps" instance=ExtResource("10_lje7w")]
-position = Vector2(6290, 926)
+position = Vector2(6371, 945)
+
+[node name="Big_House_1" parent="TileMaps" instance=ExtResource("10_bofys")]
+position = Vector2(5284, 410)
+
+[node name="Basic_House_2" parent="TileMaps" instance=ExtResource("9_s2ikp")]
+position = Vector2(3804, 313)
 
 [node name="Fields" type="Node" parent="."]
 
