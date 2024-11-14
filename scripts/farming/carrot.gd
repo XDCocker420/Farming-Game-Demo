@@ -32,10 +32,34 @@ func _on_timer_timeout() -> void:
 
 func _on_player_interact():
 	if state == 2 and field.player_in_area == true:
+		add_inventory()
 		queue_free()
 
 
 func save_crop() -> void:
 	# save crops growth stage and time left on timer
-	SaveData.data["time_left"] = timer.time_left
-	SaveData.data["growth_stage"] = state
+	SaveData.data['crops']['carrot']["time_left"] = timer.time_left
+	SaveData.data['crops']['carrot']["growth_stage"] = state
+
+func add_inventory() -> void:
+	if SaveData.data.values()[1].find_key('inventory'):
+		print('debug 1')
+		SaveData.data['player']['inventory'] += 1
+		print(SaveData.data['player']['inventory'])
+	else:
+		SaveData.data['player']['inventory'] += 1
+		print(SaveData.data['player']['inventory'])
+	"""
+	if SaveData.data.find_key('inventory'):
+		print('test1')
+		if SaveData.data.find_key('carrot'):
+			print('test2')
+			SaveData.data['player']['inventory']['carrot'] += 1
+			print(SaveData.data['player']['inventory'])
+			return
+		SaveData.data['inventory']['carrot'] = 1
+		print(SaveData.data['player']['inventory'])
+	return
+	SaveData.data['player']['inventory'] = 1
+	print(SaveData.data['player']['inventory'])
+	"""
